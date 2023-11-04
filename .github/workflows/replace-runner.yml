@@ -8,7 +8,7 @@ on:
         #required: true
 
 jobs:
-  setup-commit-signing:
+  update-runs-on-to-fixed-ip-runner:
     runs-on: ubuntu-latest
 
     steps:
