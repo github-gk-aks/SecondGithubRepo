@@ -53,7 +53,7 @@ jobs:
             git config user.email ${{ secrets.GIT_COMMITTER_EMAIL }}
             git config user.name ${{ secrets.GIT_COMMITTER_NAME }}
             git add .
-            git commit -m "Replace runs-on parameter"
+            git commit -m "Replace runs-on parameter - $(date +"%Y-%m-%d %H:%M:%S")"
             git push  
         working-directory: ${{ github.workspace }}
         env:
