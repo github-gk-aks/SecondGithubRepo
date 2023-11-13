@@ -1,6 +1,7 @@
 name: General Settings Meet Standard
 
 on:
+  push:
   workflow_dispatch:
     inputs:
         repository:
@@ -14,6 +15,7 @@ on:
 
 jobs:
   setting-meet-standard:
+    if: ${{ github.event_name != 'push' }}
     runs-on: ubuntu-latest
 
     steps:
