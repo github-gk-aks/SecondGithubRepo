@@ -13,6 +13,7 @@ on:
 jobs:
   setting-meet-standard:
     runs-on: ubuntu-latest
+
     steps:
       - name: Enable Different Settings for Repository
         uses: actions/github-script@v6
@@ -42,40 +43,40 @@ jobs:
         with:
          github-token: ${{ secrets.GK_PAT}}
          script: |
-           const defaultBranch = '${{ steps.default-branch.outputs.default_branch }}';
-           await github.rest.repos.updateBranchProtection({
-             owner: '${{ github.event.inputs.organization }}',
-             repo: '${{ github.event.inputs.repository }}',
-             branch: defaultBranch,
-             required_pull_request_reviews: {
-               dismiss_stale_reviews: true,
-               require_code_owner_reviews: true,
-               required_approving_review_count: 2,
-               dismissal_restrictions: {
-                 users: [],
-                 teams: []
-               },
-             },
-             required_status_checks: {
-               strict: true,
-               contexts: []
-             },
-             enforce_admins: true,
-             restrictions: {
-               users: [], // Add specific users if needed
-               teams: ['firstgithubrepo-teamadmin'] // Add specific teams if needed
-             },
-             required_linear_history: true,
-             allow_force_pushes: false,
-             allow_deletions: false,
-             required_conversation_resolution: true,
-           });
+            const defaultBranch = '${{ steps.default-branch.outputs.default_branch }}';
+            await github.rest.repos.updateBranchProtection({
+              owner: '${{ github.event.inputs.organization }}',
+              repo: '${{ github.event.inputs.repository }}',
+              branch: defaultBranch,
+              required_pull_request_reviews: {
+                dismiss_stale_reviews: true,
+                require_code_owner_reviews: true,
+                required_approving_review_count: 2,
+                dismissal_restrictions: {
+                    users: [],
+                    teams: []
+                },
+              },
+              required_status_checks: {
+                strict: true,
+                contexts: []
+              },
+              enforce_admins: true,
+              restrictions: {
+                users: [], // Add specific users if needed
+                teams: ['firstgithubrepo-teamadmin'] // Add specific teams if needed
+              },
+              required_linear_history: true,
+              allow_force_pushes: false,
+              allow_deletions: false,
+              required_conversation_resolution: true,
+            });
 
       - name: Enable Vulnerability alerts
         uses: actions/github-script@v6
         with:
-          github-token: ${{ secrets.GK_PAT }}
-          script: |
+         github-token: ${{ secrets.GK_PAT }}
+         script: |
             await github.rest.repos.enableVulnerabilityAlerts({
               owner: '${{ github.event.inputs.organization }}',
               repo: '${{ github.event.inputs.repository }}'
@@ -84,8 +85,8 @@ jobs:
       - name: Require Signed Commits
         uses: actions/github-script@v6
         with:
-          github-token: ${{ secrets.GK_PAT }}
-          script: | 
+         github-token: ${{ secrets.GK_PAT }}
+         script: | 
             const defaultBranch = '${{ steps.default-branch.outputs.default_branch }}';     
             await github.rest.repos.createCommitSignatureProtection({
               owner: '${{ github.event.inputs.organization }}',
