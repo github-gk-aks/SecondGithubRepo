@@ -4,9 +4,11 @@ on:
   workflow_dispatch:
     inputs:
         repository:
+          type: string
           description: 'Repository name'
           required: true
         organization:
+          type: string
           description: 'Organization name'
           required: true
 
