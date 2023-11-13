@@ -8,8 +8,8 @@ on:
           description: 'Repository name'
           required: true
         organisation:
-          type: string
           description: 'organisation name'
+          type: string
           required: true
 
 jobs:
@@ -95,3 +95,5 @@ jobs:
               repo: '${{ github.event.inputs.repository }}',
               branch: defaultBranch
             }); 
+
+  
