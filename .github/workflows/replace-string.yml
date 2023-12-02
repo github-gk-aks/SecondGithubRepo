@@ -23,15 +23,17 @@ jobs:
           python -m pip install --upgrade pip
           pip install openpyxl
 
-      - name: Print Debug Information
-        run: |
-          echo "EXCEL_FILE: $EXCEL_FILE"
-          echo "GITHUB_WORKSPACE: ${{ github.workspace }}"
-          echo "YML Files: $(find $GITHUB_WORKSPACE -name '*.yml')"
+      # - name: Print Debug Information
+      #   run: |
+      #     echo "EXCEL_FILE: $EXCEL_FILE"
+      #     echo "GITHUB_WORKSPACE: ${{ github.workspace }}"
+      #     echo "YML Files: $(find $GITHUB_WORKSPACE -name '*.yml')"
 
       - name: Replace Strings in YML files
         run: |
-          python script/string-replaces.py
+          echo "EXCEL_FILE: $EXCEL_FILE"
+          echo "GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
+          echo "YML Files: $(find $GITHUB_WORKSPACE -name '*.yml')"
         env:
           EXCEL_FILE: "files/File-Replacement.xlsx"
           GITHUB_WORKSPACE: ${{ github.workspace }}
