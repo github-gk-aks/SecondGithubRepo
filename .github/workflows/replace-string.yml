@@ -3,7 +3,7 @@ name: Replace Strings
 on:
   push:
     branches:
-      - main
+      - github-migration
 
 jobs:
   replace-strings:
