@@ -29,7 +29,7 @@ def replace_strings(excel_path, repo_path):
             f.write(content)
 
 if __name__ == "__main__":
-    excel_file = sys.argv[1] if len(sys.argv) > 1 else 'files/File-Replacement.xlsx'
-    github_workspace = sys.argv[2] if len(sys.argv) > 2 else '.'
+    excel_file = os.getenv('EXCEL_FILE')
+    github_workspace = os.getenv('GITHUB_WORKSPACE')
 
     replace_strings(excel_file, github_workspace)
