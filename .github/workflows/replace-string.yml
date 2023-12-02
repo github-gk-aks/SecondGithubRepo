@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v2
@@ -25,8 +25,8 @@ jobs:
 
       - name: Replace Strings in YML files
         run: |
-          python .github/scripts/replace_strings.py
+          python .github/scripts/string-replace.py
         env:
-          EXCEL_FILE: ${{ secrets.EXCEL_FILE }}
+          EXCEL_FILE: "files/File-Replacement.xlsx"
           GITHUB_WORKSPACE: ${{ github.workspace }}
         shell: bash
