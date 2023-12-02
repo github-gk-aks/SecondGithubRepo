@@ -34,6 +34,7 @@ jobs:
           echo "EXCEL_FILE: $EXCEL_FILE"
           echo "GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
           echo "YML Files: $(find $GITHUB_WORKSPACE -name '*.yml')"
+          python script/string-replaces.py
         env:
           EXCEL_FILE: "files/File-Replacement.xlsx"
           GITHUB_WORKSPACE: ${{ github.workspace }}
