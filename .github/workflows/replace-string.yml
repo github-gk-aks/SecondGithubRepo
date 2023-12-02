@@ -25,7 +25,7 @@ jobs:
 
       - name: Replace Strings in YML files
         run: |
-          python /script/string-replace.py
+          python script/string-replace.py
         env:
           EXCEL_FILE: "files/File-Replacement.xlsx"
           GITHUB_WORKSPACE: ${{ github.workspace }}
