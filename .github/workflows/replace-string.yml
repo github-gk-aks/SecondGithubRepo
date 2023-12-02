@@ -19,13 +19,13 @@ jobs:
           python-version: '3.x'
 
       - name: Install dependencies
-        run: |
+        run: |  
           python -m pip install --upgrade pip
           pip install openpyxl
 
       - name: Print Debug Information
         run: |
-          echo "EXCEL_FILE: ${{ env.EXCEL_FILE }}"
+          echo "EXCEL_FILE: $EXCEL_FILE"
           echo "GITHUB_WORKSPACE: ${{ github.workspace }}"
           echo "YML Files: $(find $GITHUB_WORKSPACE -name '*.yml')"
 
