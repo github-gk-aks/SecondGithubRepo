@@ -61,3 +61,4 @@ jobs:
             git push # Replace 'branch-name' with the branch name
         env:
             GPG_KEY_PASSPHRASE: ${{ secrets.PASSPHRASE }}
+            GITHUB_WORKSPACE: ${{ github.workspace }}
