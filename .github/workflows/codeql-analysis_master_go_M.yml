@@ -1,46 +1,47 @@
-name: GHAS Analysis Old To be Replaced
+name: GHAS Analysis
 
 on:
   push:
-    branches:
-      - master
+    branches: [ "master" ]
   pull_request:
-    branches:
-      - master
+    branches: [ "master" ]
+  schedule:
+    - cron '0 2 30 * *'
 
 jobs:
   analyze:
+    if: ${{ !startsWith(github.head_ref, 'dependabot/') }}
     runs-on: ubuntu-latest
 
     strategy:
       fail-fast: false
       matrix:
         language: [ 'go' ]
-
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Initialize CodeQL
+      - name: Set up CodeQL
         uses: github/codeql-action/init@v1
         with:
           languages: ${{ matrix.language }}
+          config-file: ./.github/codeql/codeql-config.yml
 
-      - name: Build and analyze with CodeQL
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v2
+
+      # Run CodeQL analysis
+      - name: Run CodeQL Analysis
         uses: github/codeql-action/analyze@v1
 
-      - name: Upload SARIF results
-        uses: github/codeql-action/upload-sarif@v1
-        with:
-          sarif_file: ${{ github.workspace }}/codeql-sarif-results.sarif
   dependencyCheck:
     name: Dependency Checkout
     runs-on: ubuntu-latest
 
     strategy:
-      fail-fast: false
-      matrix: 
-        language: [ 'java' ]
+    fail-fast: false
+    matrix: 
+      language: [ 'go' ]
 
     steps:
 
