@@ -1,0 +1,20 @@
+{
+    "PROD_ENV_1": {
+        "secretname": "PROD_ENV_1",
+        "destinationEnvironmentName": "prod",
+        "destinationRepositoryId": "435466545",
+        "destinationPersonalAccessTokenName": "CONFIDENTIAL_TOKEN"
+    },
+    "PROD_ENV_2": {
+        "secretname": "PROD_ENV_2",
+        "destinationEnvironmentName": "prod",
+        "destinationRepositoryId": "435466545",
+        "destinationPersonalAccessTokenName": "CONFIDENTIAL_TOKEN"
+    },
+    "PROD_ENV_3": {
+        "secretname": "PROD_ENV_3",
+        "destinationEnvironmentName": "prod",
+        "destinationRepositoryId": "435466545",
+        "destinationPersonalAccessTokenName": "CONFIDENTIAL_TOKEN"
+    }
+}
